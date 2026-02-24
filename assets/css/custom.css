@@ -1,0 +1,71 @@
+/* -----------------------------------------------
+   wolfcryw — custom gallery & navigation styles
+   All site-specific overrides live here so that
+   main.css (generated from SCSS) stays untouched.
+----------------------------------------------- */
+
+/* Gallery Grid
+   Add more images by dropping an <a class="glightbox"> inside .gallery-grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    gap: 0.5rem;
+    margin: 1.5rem 0 0.5rem;
+}
+
+.gallery-grid a {
+    display: block;
+    overflow: hidden;
+    border-radius: 3px;
+    position: relative;
+}
+
+.gallery-grid a img {
+    width: 100%;
+    height: 155px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.gallery-grid a:hover img {
+    transform: scale(1.05);
+    opacity: 0.82;
+}
+
+/* Subtle overlay on hover */
+.gallery-grid a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.06);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+}
+
+.gallery-grid a:hover::after {
+    opacity: 1;
+}
+
+/* Article prev / next navigation */
+.gallery-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Placeholder so justify-content: space-between still centers
+   a lone button when one side is empty */
+.gallery-nav .nav-spacer {
+    display: inline-block;
+    width: 1px;
+}
+
+/* GLightbox overrides — keep the dark theme consistent */
+.glightbox-container .gslide-description {
+    background: rgba(27, 31, 34, 0.95);
+}
